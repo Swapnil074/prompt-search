@@ -4,9 +4,6 @@ import { useEffect, useState } from "react"
 import PromptCard from "./PromptCard"
 
 const PromptCardList=({data,handleTagClick})=>{
-
-
-
   return(
   <div className="mt-16 prompt_layout">
     {data.map((post)=>(
@@ -22,7 +19,6 @@ const PromptCardList=({data,handleTagClick})=>{
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
 
-  // Search states
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
@@ -46,7 +42,7 @@ const Feed = () => {
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
-    // debounce method
+
     setSearchTimeout(
       setTimeout(() => {
         const searchResult = filterPrompts(e.target.value);
@@ -73,7 +69,6 @@ const Feed = () => {
         />
       </form>
 
-      {/* All Prompts */}
       {searchText ? (
         <PromptCardList
           data={searchedResults}
